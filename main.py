@@ -21,6 +21,8 @@ selection = option_menu(
     icons=["bi-boxes", "book", "body-text", "app"],  # https://icons.getbootstrap.com
     orientation="horizontal",
 )
+if "image" not in st.session_state:
+    st.session_state.image = None
 
 # --- SIDEBAR SETUP ---
 # Configure the API key
@@ -28,7 +30,8 @@ st.sidebar.title("Config️uration Options")
 api_key = sidebar_api_key_configuration()
 
 if selection == 'Analyze':
-    uploaded_file = sidebar_image_uploader()
+    uploaded_file, st.session_state.image = sidebar_image_uploader()
+    st.sidebar.image(st.session_state.image, caption="Uploaded Image", use_column_width=True)
     st.header("Analyze Food")
     st.write("Upload the food image to get the details of food items and caloric intake.")
     submit_analyze = st.button("Analyze", type="primary", disabled=not uploaded_file)
