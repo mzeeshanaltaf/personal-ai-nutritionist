@@ -34,6 +34,8 @@ Also, estimated caloric intake should not exceed the per day calorie provided as
 
 if "prompt_activation" not in st.session_state:
     st.session_state.prompt_activation = False
+if "image" not in st.session_state:
+    st.session_state.image = None
 
 
 # Function for API configuration at sidebar
@@ -70,8 +72,8 @@ def sidebar_image_uploader():
                                              disabled=not st.session_state.prompt_activation)
     image = ""
     if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        st.sidebar.image(image, caption="Uploaded Image", use_column_width=True)
+        st.session_state.image = Image.open(uploaded_file)
+        st.sidebar.image(st.session_state.image, caption="Uploaded Image", use_column_width=True)
     return uploaded_file
 
 
