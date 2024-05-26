@@ -32,9 +32,6 @@ Also, estimated caloric intake should not exceed the per day calorie provided as
 
 """
 
-if "prompt_activation" not in st.session_state:
-    st.session_state.prompt_activation = False
-
 
 # Function for API configuration at sidebar
 def sidebar_api_key_configuration():
@@ -67,12 +64,12 @@ def sidebar_food_calorie_configuration():
 def sidebar_image_uploader():
     st.sidebar.header("Upload Image")
     uploaded_file = st.sidebar.file_uploader("Upload an image of Food", type=["jpg", "jpeg", "png"],
-                                             disabled=not st.session_state.prompt_activation)
-    image = ""
+                                                              disabled=not st.session_state.prompt_activation)
     if uploaded_file is not None:
-        image = Image.open(uploaded_file)
-        # st.sidebar.image(image, caption="Uploaded Image", use_column_width=True)
-    return uploaded_file, image
+        st.session_state.uploaded_file = uploaded_file
+        image = Image.open(st.session_state.uploaded_file)
+        st.sidebar.image(image, caption="Uploaded Image", use_column_width=True)
+    return uploaded_file
 
 
 # Function to load and display the lottie file
