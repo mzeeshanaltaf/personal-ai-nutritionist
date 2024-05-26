@@ -109,7 +109,7 @@ if selection == "About":
         ''')
     with st.expander("Where to get the source code of this app?"):
         st.markdown(''' Source code is available at:
-    -  https://github.com/mzeeshanaltaf/genai-rag-groq-faiss
+    -  https://github.com/mzeeshanaltaf/personal-ai-nutritionist
         ''')
 
     with st.expander("Whom to contact regarding this app?"):
