@@ -6,9 +6,9 @@ from PIL import Image
 
 input_prompt_analyze = """
 You are an expert nutritionist where you need to see the food items from the image and
-calculate the total calories. Also provide the details of every food items with calories intake
+calculate the estimated total calories. Also provide the details of every food items with estimated calories intake
 in tabular format with column names as 'Items list', 'Calories' and each row contains details
-of items and calories in their respective columns
+of items and estimated calories in their respective columns
 
 Finally, you can also mention whether the food is healthy or not and also mention the
 approximate percentage split of the ratio of carbohydrates, fats, fibers, sugar and other important things
@@ -19,7 +19,8 @@ In case if the image is not related to food item, mention that and don't take an
 
 input_prompt_recipe = """
 You are an expert nutritionist where you need to see the food items from the image and
-will share the food recipe step by step.
+share the food recipe step by step. If food does not look healthy to you, mention so but also provide the step by 
+step recipe.
 
 In case if the image is not related to food item, mention that and don't take any further steps.
 """
@@ -27,7 +28,7 @@ In case if the image is not related to food item, mention that and don't take an
 input_prompt_diet = """
 You are an expert nutritionist. Purpose a diet plan based on given inputs of food items and per day caloric intake. 
 Diet plan should include diet for Breakfast, Lunch and Dinner and should include only the food items provided as input.
-Also, caloric intake should not exceed the per day calorie provided as input.
+Also, estimated caloric intake should not exceed the per day calorie provided as input.
 
 """
 
